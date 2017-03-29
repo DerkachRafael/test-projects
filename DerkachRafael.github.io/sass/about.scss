@@ -1,0 +1,164 @@
+@import "vars";
+@import "fonts";
+@import "base";
+
+.header-default--bg{
+  background: url("../img/bg-default.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 400px;
+}
+
+body{
+  background-color: #f2f6ff;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.b-about{
+  margin-bottom: 35px;
+}
+.b-video {
+  position: relative;
+  margin: 10px auto;
+  width: 70%;
+  overflow: hidden;
+  padding-bottom: 39.25%;
+  video {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    left: 0;
+    right: 0;
+  }
+}
+#timeline {
+  width: 100%;
+  margin: 30px auto;
+  position: relative;
+  padding: 0 10px;
+  @include prefix(transition, all .4s ease);
+
+  &:before {
+    content:"";
+    width: 3px;
+    height: 100%;
+    background: $timeline-color;
+    left: 50%;
+    top: 0;
+    position: absolute;
+  }
+
+  &:after {
+    content: "";
+    clear: both;
+    display: table;
+    width: 100%;
+  }
+
+  .timeline-item {
+    margin-bottom: 50px;
+    position: relative;
+    @extend %clearfix;
+
+    .timeline-icon {
+      background: $timeline-color;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      overflow: hidden;
+      margin-left: -23px;
+      @include prefix(border-radius, 50%);
+
+      svg {
+        position: relative;
+        top: 9px;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        fill: #fff;
+      }
+    }
+
+    .timeline-content {
+      width: 45%;
+      background: #fff;
+      padding: 20px;
+      @include prefix(box-shadow, 0 3px 0 rgba(0,0,0,0.1));
+      @include prefix(border-radius, 20%);
+      @include prefix(transition, all .3s ease);
+      h2 {
+        padding: 15px;
+        background: $timeline-color;
+        color: #fff;
+        margin: -20px -20px 0 -20px;
+        font-weight: 300;
+        @include prefix(border-radius, 22px 0 0 0);
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 45%;
+        top: 20px;
+        width: 0;
+        height: 0;
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        border-left:7px solid $timeline-color;
+      }
+
+      &.right {
+        float: right;
+
+        &:before {
+          content: '';
+          right: 45%;
+          left: inherit;
+          border-left: 0;
+          border-right: 7px solid $timeline-color;
+        }
+      }
+    }
+  }
+}
+.timeline-list{
+  padding: 8px 0;
+  list-style-image: url(../img/tick-mark.svg);
+  list-style-position: inside;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  #timeline {
+    margin: 30px;
+    padding: 0px;
+    width: 90%;
+    &:before {
+      left: 0;
+    }
+
+    .timeline-item {
+      .timeline-content {
+        width: 90%;
+        float: right;
+
+        &:before, &.right:before {
+          left: 10%;
+          margin-left: -6px;
+          border-left: 0;
+          border-right: 7px solid $timeline-color;
+        }
+      }
+
+      .timeline-icon {
+        left: 0;
+      }
+    }
+  }
+}

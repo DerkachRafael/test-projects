@@ -1,0 +1,27 @@
+$accent-color: #01b3a0;
+$light-color: #fff;
+// Variables
+$blue: #2b2e48;
+$primary-color: $accent-color;
+$secondary-color: $blue;
+// Typography
+$base-font: helvetica, arial, tahoma, verdana;
+$base-font-title: "Dosis", arial, tahoma, verdana;
+$base-font-color: #726f77;
+// Timeline
+$timeline-color: $primary-color;
+// Mixins and Placeholders
+%clearfix {
+  &:after, &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    clear: both;
+  }
+}
+
+@mixin prefix($prop, $val) {
+  @each $prefix in '-webkit-', '-moz-', '-ms-', '' {
+    #{$prefix}#{$prop}: $val;
+  }
+}

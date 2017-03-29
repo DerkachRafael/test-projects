@@ -1,0 +1,122 @@
+@import "vars";
+@import "fonts";
+@import "base";
+
+section {
+  margin: 25px 0;
+}
+
+.header-default--bg {
+  background: url("../img/bg-default.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 400px;
+}
+
+.grid {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+
+.grid--cols-3 > .grid-cell {
+  flex: 0 0 100%;
+}
+
+.wrap-post {
+  margin-right: 20px;
+}
+
+.b-post {
+  position: relative;
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: .25s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+  &:hover{
+
+  }
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    width: 0;
+    height: 0;
+    transition: .75s ease-in-out .3s;
+  }
+  &:before {
+    top: 0;
+    left: 0;
+  }
+  &:after {
+    bottom: 0;
+    right: 0;
+  }
+  &:hover {
+    &:after {
+      border-bottom-color: blue;
+      border-left-color: blue;
+      -webkit-transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
+      transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
+    }
+    &:before {
+      border-top-color: blue;
+      border-right-color: blue;
+      -webkit-transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
+      transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
+    }
+    &:after, &:before {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+  header {
+    a {
+      color: $accent-color;
+      display: inline-block;
+      z-index: 10;
+      position: relative;
+    }
+  }
+}
+
+.list-dates {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap-reverse;
+  padding: 10px 0;
+
+  li {
+
+  }
+}
+
+/* Large screens */
+@media (min-width: 48em) {
+  .grid--cols-3 > .grid-cell {
+    flex: 1;
+  }
+}
+
+@media (max-width: 760px) {
+  .grid--cols-3 > .grid-cell {
+    text-align: center;
+  }
+  .wrap-post {
+    width: 80% !important;
+    margin: auto;
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-hight-contrast: active) {
+  .b-post{
+    &:before,&:after{
+      transition: initial;
+    }
+  }
+}

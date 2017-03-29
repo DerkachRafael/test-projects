@@ -1,0 +1,262 @@
+@import "vars";
+@import "fonts";
+@import "base";
+
+.header-default--bg{
+  background: url("../img/bg-default.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 400px;
+}
+
+body{
+  background-color: #f2f6ff;
+}
+
+.b-news{
+  padding: 50px 0;
+  background: aliceblue;
+  &__row{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}
+
+.b-post{
+  max-width: 370px;
+  width: 100%;
+  margin: 15px 10px 15px 0;
+  background: #fff;
+
+  &__date{
+    color: red;
+  }
+  &__desc{
+    padding: 10px;
+    background-color: $light-color;
+  }
+  &__txt{
+    margin: 10px 0;
+  }
+  &__image{
+    display: block;
+  }
+
+}
+//colors
+$color_eastern_blue_approx: $accent-color;
+$black_25: rgba(0,0,0,.25);
+$white_85: rgba(255,255,255,.85);
+$white_35: rgba(255,255,255,.35);
+$white_20: rgba(255,255,255,.2);
+$black_35: rgba(0,0,0,.35);
+$black_50: rgba(0,0,0,.5);
+$white_100: rgba(255,255,255,1);
+$white_15: rgba(255,255,255,.15);
+
+//fonts
+$font_0: Fontawesome;
+
+//@extend-elements
+//original selectors
+//.pagination, .pagination li a
+%extend_1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+//original selectors
+//.pagination li:first-of-type span, .pagination li:last-of-type span, .pagination li:nth-of-type(2) span, .pagination li:nth-last-of-type(2) span
+%extend_2 {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+//original selectors
+//.pagination li:first-child a::before, .pagination li:last-child a::after, .pagination li:nth-of-type(2) a::before, .pagination li:nth-last-of-type(2) a::after
+%extend_3 {
+  display: inline-block;
+  font-family: $font_0;
+  font-size: inherit;
+  text-rendering: auto;
+  transform: translate(0, 0);
+}
+
+
+.pagination {
+  @extend %extend_1;
+  li {
+    background-color: $color_eastern_blue_approx;
+    a {
+      @extend %extend_1;
+    }
+    &:first-of-type {
+      a {
+        border-left-width: 1px;
+      }
+      span {
+        @extend %extend_2;
+      }
+    }
+    &:nth-of-type(2) {
+      span {
+        @extend %extend_2;
+      }
+      a::before {
+        @extend %extend_3;
+        content: "\f104";
+      }
+    }
+    &:nth-last-of-type(2) {
+      span {
+        @extend %extend_2;
+      }
+      a::after {
+        @extend %extend_3;
+        content: "\f104";
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: rotate(180deg);
+      }
+    }
+    &:not([class*="current"]) a {
+      &:hover {
+        background-color: $white_20;
+        border-top-color: $black_35;
+        border-bottom-color: $black_50;
+      }
+      &:focus {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 0 10px 1px $black_25;
+        border-left-width: 1px;
+      }
+      &:active {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 0 10px 1px $black_25;
+        border-left-width: 1px;
+      }
+    }
+    &:last-of-type span {
+      @extend %extend_2;
+    }
+    &:first-child a::before {
+      @extend %extend_3;
+      content: "\f100";
+    }
+    &:last-child a::after {
+      @extend %extend_3;
+      content: "\f100";
+      //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+      transform: rotate(180deg);
+    }
+    &.current a {
+      padding-top: .25em;
+      color: $white_100;
+      background-color: $white_15;
+      //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: inset 0 2px 1px 0 $black_25;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+  a {
+    font-weight: 300;
+    padding-top: 1px;
+    text-decoration: none;
+    border: 1px solid $black_25;
+    border-left-width: 0;
+    min-width: 44px;
+    min-height: 44px;
+    height: 44px;
+    line-height: 44px;
+    color: $white_85;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: inset 0 1px 0 0 $white_35;
+  }
+}
+@media only screen and(max-width: 64.063em ) {
+  .pagination li {
+    &:first-child {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    &:last-child {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    &:nth-of-type(2) a {
+      border-left-width: 1px;
+    }
+  }
+}
+@media only screen and(max-width: 40.063em ) {
+  .pagination li {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    &.current {
+      position: initial;
+      top: initial;
+      left: initial;
+    }
+    &:first-of-type {
+      position: initial;
+      top: initial;
+      left: initial;
+    }
+    &:last-of-type {
+      position: initial;
+      top: initial;
+      left: initial;
+    }
+    &:nth-of-type(2) {
+      position: initial;
+      top: initial;
+      left: initial;
+      a {
+        border-left-width: 0;
+      }
+    }
+    &:nth-last-of-type(2) {
+      position: initial;
+      top: initial;
+      left: initial;
+    }
+  }
+}
+@media only screen and(max-width: 30.063em ) {
+  h1 {
+    font-size: 1.35em !important;
+  }
+  .pagination li {
+    &:first-child {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    &:last-child {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    &:nth-of-type(2) a {
+      border-left-width: 1px;
+    }
+  }
+}
+@media only screen and(max-width: 15.063em ) {
+  .pagination li {
+    width: 50%;
+    &.current {
+      order: 2;
+      width: 100%;
+      border-left-width: 1px;
+    }
+  }
+}

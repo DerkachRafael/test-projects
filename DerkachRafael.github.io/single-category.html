@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]>
+<html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="ru">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>SingleCat</title>
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="libs/animate/animate-min.css">
+    <!--style css-->
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/single-page.css">
+    <script src="libs/modernizr/modernizr.js"></script>
+    <script src="js/mapbox.js"></script>
+    <link rel="stylesheet" href="css/mapbox.css">
+    <!--<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>-->
+    <!--<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />-->
+    <!--<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.1/mapbox-gl-directions.js'></script>-->
+    <!--<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.1/mapbox-gl-directions.css' type='text/css' />-->
+</head>
+<body>
+<header class="main-header header-default--bg">
+    <div class="top-panel">
+        <!--LOGO-->
+        <div class="b-logo">
+            <a href="./" class="b-logo__link"><img class="b-logo__img" src="img/logo.svg" alt="Bike-shop"></a>
+        </div>
+        <!--MAIN NAVIGATION-->
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-list__item"><a href="index.html" class="nav-list__link ">Home</a></li>
+                <li class="nav-list__item"><a href="about.html" class="nav-list__link">About</a></li>
+                <li class="nav-list__item"><a href="single-category.html" class="nav-list__link nav-list__link--active">Single-tour</a>
+                </li>
+                <li class="nav-list__item"><a href="contact.html" class="nav-list__link">Contact</a></li>
+                <li class="nav-list__item"><a href="gallery.html" class="nav-list__link">Gallery</a></li>
+                <li class="nav-list__item"><a href="faq.html" class="nav-list__link">Faq</a></li>
+                <li class="nav-list__item"><a href="press.html" class="nav-list__link ">News</a></li>
+                <li class="nav-list__item"><a href="news.html" class="nav-list__link">Posts</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!--CONTENT HEADER-->
+    <div class="main-header__content text-center">
+        <a href="index.html" class="link-to-home">
+            Rent a bike
+        </a>
+    </div>
+</header>
+<section class="b-single row clearfix">
+    <div class="container container-post">
+        <!--1 left-->
+        <article class="b-descr clearfix">
+            <img class="shape-left" src="img/single1.jpg" alt="alt">
+            <h3 class="title">West Village</h3>
+            <p>This unique tour begins while it is still daylight, with a pedal through the historic and charming West
+                Village. As we ride along charming streets and by quaint houses, we’ll pass by a famous restaurant that
+                was once a classic “speakeasy.” Today, it still has no identifying sign outside! Television sitcom
+                lovers will certainly recognize a very familiar site - the actual building featured in the program
+                Friends! Before we leave this neighborhood, we’ll stop at the birthplace of the modern.</p>
+        </article>
+        <!--2 right-->
+        <article class="b-descr b-post--right clearfix">
+            <div class="b-bg-right"><img class="shape-right" src="img/single2.jpg" alt="alt"></div>
+            <h3 class="title text-right">Hudson River Greenway</h3>
+            <p class="text-right">We’ll then head to the new Hudson River Greenway, a splendid bike path with truly
+                magnificent views of the New York Harbor. Passing nearby Ground Zero, splendid bike path with we will
+                visit yet another monument to human despair. We then ride through the nearly-deserted Wall Street area.
+                Here, the spectacular Stock Exchange building is especially impressive at twilight.</p>
+        </article>
+    </div>
+</section>
+
+<section class="b-about text-center">
+    <article class="b-desc">
+        <h3 class="title-section">A Few Words
+            About New York
+        </h3>
+        <p>A trip to New York City is the experience of a lifetime. With famous attractions like Times Square, Central
+            Park, the Empire State Building and Yankee Stadium—to name just a few—NYC packs more to see and do into one
+            compact area than any other place on earth. Each of the City’s five boroughs contains its own roster of
+            must-see destinations, great restaurants, cultural hot spots and unforgettable activities. Enjoy a great
+            holiday with this bike tour.</p>
+    </article>
+</section>
+<p class="ie-help">Oooops! Do you want to see the map? Switch to a normal browsers :) </p>
+<section class="b-map">
+    <div id='map'></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoid2hlcmV3aHkiLCJhIjoiY2owaDYwaHRqMDBzejMzb2YwN2tyZjE1NiJ9.4aq_MgBIjjq3iHWI8qcjKQ';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            center: [-79.4512, 43.6568],
+            zoom: 13
+        });
+
+        map.addControl(new MapboxDirections({
+            accessToken: mapboxgl.accessToken
+        }), 'top-left');
+    </script>
+
+
+</section>
+<footer class="b-footer">
+    <div class="b-footer__row">
+        <div class="b-logo">
+            <a href="./" class="b-logo__link"><img class="b-logo__img" src="img/logo.svg" alt="Bike-shop"></a>
+        </div>
+        <p class="copyright"> &copy; 2017 All Rights Reserved Terms of Use and Privacy Policy</p>
+    </div>
+</footer>
+<!--[if lt IE 9]>
+<script src="libs/html5shiv/es5-shim.min.js"></script>
+<script src="libs/html5shiv/html5shiv.min.js"></script>
+<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="libs/respond/respond.min.js"></script>
+<![endif]-->
+<script src="js/script.js"></script>
+</body>
+</html>
